@@ -108,6 +108,8 @@ Constantly picking up your smartphone to check two-factor authentication (2FA) S
 ### The Superpower
 **GSConnect** is the complete, native GNOME Shell implementation of the KDE Connect protocol. It bridges your Android phone (or iPhone via KDE Connect iOS) with your Linux workstation completely wirelessly over local Wi-Fi with TLS encryption.
 
+![GSConnect Wireless Device Integration](gsconnect-phone-sync-demo.png)
+
 ### What It Does Automatically
 | Feature | Everyday Workflow |
 | :--- | :--- |
@@ -126,6 +128,8 @@ Manual window floating is messy; resizing windows by their 1px borders feels arc
 
 ### The Superpower
 **Tiling Shell** brings the modern grid snap experience (similar to Windows FancyZones or macOS Rectangle) directly into GNOME Mutter:
+
+![Tiling Shell Grid Layout Selector](tiling-shell-layouts-demo.png)
 
 * **Visual Snap Zones:** Drag any window toward an edge or corner to see translucent snap zones (halves, thirds, 2x2 grids, or customized asymmetric splits).
 * **Inner & Outer Gaps:** Subtle 4px padding between windows prevents visual overlap and gives the workspace room to breathe.
