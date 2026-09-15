@@ -24,22 +24,16 @@ If you've ever used macOS, you know **Quick Look**: you click any file, hit <kbd
 
 On Linux, this exact superpower is powered by **GNOME Sushi**.
 
-### See It In Action (Real Desktop Screenshots)
+### See It In Action: The 4-in-1 Preview Superpower
 
-#### 1. Instant High-Res Image Inspection
-Tapping <kbd>Space</kbd> on a massive 16.8 MB graphic (`blue-lotus1.png`) opens it instantly in a clean frosted overlay with zero lag:
+Tap <kbd>Space</kbd> on any document, folder, script, or image in Nautilus to trigger an instant hardware-accelerated preview overlay:
 
-![GNOME Sushi Image Preview](sushi-image-preview.png)
+![GNOME Sushi 4-in-1 File Preview Showcase](sushi-file-preview-showcase.png)
 
-#### 2. Syntax-Highlighted Code Preview Without an IDE
-Need to verify a function or check imports in a script (`app.py`)? Tap <kbd>Space</kbd> to inspect the syntax-colored code, complete with line numbers, docstrings, and language highlighting:
-
-![GNOME Sushi Code Preview](sushi-code-preview.png)
-
-#### 3. Instant Folder Metadata & Item Counts
-Instead of right-clicking a directory and waiting for "Properties" to scan disk sectors, hitting <kbd>Space</kbd> on a folder shows recursive item counts (159 items), total directory size (63.6 MB), and last modified timestamp right away:
-
-![GNOME Sushi Folder Preview](sushi-folder-preview.png)
+1. **01 Project Report:** Instant rendering of Markdown (`.md`), PDFs, and documents with formatted headers and tables without launching an office suite.
+2. **02 Project Assets:** Instant folder inspection showing recursive item counts (159 items), disk size (63.6 MB), and timestamps without opening slow property dialogs.
+3. **03 AI Simulation / Code:** Syntax-highlighted code (`.py`, `.js`, `.json`, `.sh`) with line numbers and imports without opening an IDE.
+4. **04 Visual Rendering:** Instant display of high-resolution artwork and photography (`16.8 MB`) in under 80ms with full color accuracy.
 
 ### What Sushi Can Preview in 100ms
 * **High-Res Images & SVGs:** Opens instantaneously with full zoom, dimension metadata, and color profiles.
