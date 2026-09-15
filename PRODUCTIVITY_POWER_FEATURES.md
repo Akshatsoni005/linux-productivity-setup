@@ -158,6 +158,10 @@ Standard Linux login screens (GDM / LightDM) are flat, static, and require typin
 ### The Superpower
 We engineered a **Live Lock Screen with Apple-style biometric face unlock**:
 
+![Face ID Biometric Unlock Demo](face-id-unlock-demo.gif)
+
+> 🎬 **High-Definition Video Recording:** [`face-id-unlock-demo.mp4`](face-id-unlock-demo.mp4) *(Live camera recognition and smooth keyboard entry)*
+
 1. **Live Motion Wallpaper & Clock:** Waking the machine displays an atmospheric live wallpaper with centered typography and system status.
 2. **Non-Intrusive Infrared Face Recognition:** When you sit in front of the laptop, the camera identifies your face in less than 300ms using Howdy PAM.
 3. **The iPhone-Style "Unlocked" Badge:** Instead of jarringly flashing the desktop open immediately, it displays a sleek glass pill badge:  

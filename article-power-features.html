@@ -684,10 +684,23 @@ nautilus -q # restart file manager</code></pre>
         <h2>iPhone-Style Biometric Face Unlock</h2>
       </div>
       <p>
-        On cold boot or wake-from-sleep, my laptop launches straight into an animated live lockscreen:
+        On cold boot or wake-from-sleep, my laptop launches straight into an animated live lockscreen with video wallpaper and clock:
       </p>
+
+      <!-- Face ID Demo Video Showcase -->
+      <div style="margin: 1.5rem 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--card-border); background: #000; box-shadow: 0 12px 30px rgba(0,0,0,0.4); max-width: 380px; margin-left: auto; margin-right: auto;">
+        <video autoplay loop muted playsinline poster="face-id-unlock-demo.gif" style="width: 100%; height: auto; display: block;">
+          <source src="face-id-unlock-demo.mp4" type="video/mp4">
+          <img src="face-id-unlock-demo.gif" alt="Face ID Biometric Unlock Demo" style="width: 100%; height: auto;">
+        </video>
+        <div style="padding: 0.75rem 1rem; background: rgba(22, 24, 34, 0.95); font-size: 0.82rem; color: var(--text-muted); border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center;">
+          <span>📹 Real Hardware Face ID Demo</span>
+          <a href="face-id-unlock-demo.mp4" download style="color: var(--accent); text-decoration: none; font-weight: 600;">Download MP4 ⬇️</a>
+        </div>
+      </div>
+
       <ul>
-        <li>The camera verifies my face in less than 300 milliseconds.</li>
+        <li>The camera verifies my face in less than 300 milliseconds using Howdy PAM.</li>
         <li>Instead of abruptly throwing open the desktop, it displays a sleek glass pill badge: <code>🔓 Unlocked — Press any key to open</code>.</li>
         <li>Tapping <kbd>Space</kbd> or swiping up smoothly enters the workspace.</li>
       </ul>
