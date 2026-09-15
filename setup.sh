@@ -35,6 +35,7 @@ fi
 
 # Detect Script Directory or Online Mode
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "")"
+GITHUB_RAW="https://raw.githubusercontent.com/Akshatsoni005/linux-productivity-setup/master"
 MIRROR_BASE="https://www.theaiserver.in/downloads"
 
 fetch_asset() {
@@ -42,21 +43,34 @@ fetch_asset() {
   local dest_dir="$2"
   mkdir -p "$dest_dir"
 
+  # 1. Check local repo / script directory
   if [ -n "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/$asset_name" ]; then
     tar -xf "$SCRIPT_DIR/$asset_name" -C "$dest_dir"
+    return 0
   elif [ -f "$HOME/$asset_name" ]; then
     tar -xf "$HOME/$asset_name" -C "$dest_dir"
-  else
-    local tmp_file="/tmp/$asset_name"
+    return 0
+  fi
+
+  # 2. Download from GitHub raw, fallback to theaiserver mirror
+  local tmp_file="/tmp/$asset_name"
+  local downloaded=false
+
+  for url in "$GITHUB_RAW/$asset_name" "$MIRROR_BASE/$asset_name"; do
     if command -v curl >/dev/null 2>&1; then
-      curl -fsSL "$MIRROR_BASE/$asset_name" -o "$tmp_file"
+      if curl -fsSL "$url" -o "$tmp_file" 2>/dev/null; then
+        downloaded=true; break
+      fi
     elif command -v wget >/dev/null 2>&1; then
-      wget -q "$MIRROR_BASE/$asset_name" -O "$tmp_file"
+      if wget -q "$url" -O "$tmp_file" 2>/dev/null; then
+        downloaded=true; break
+      fi
     fi
-    if [ -f "$tmp_file" ]; then
-      tar -xf "$tmp_file" -C "$dest_dir"
-      rm -f "$tmp_file"
-    fi
+  done
+
+  if [ "$downloaded" = true ] && [ -f "$tmp_file" ]; then
+    tar -xf "$tmp_file" -C "$dest_dir"
+    rm -f "$tmp_file"
   fi
 }
 
