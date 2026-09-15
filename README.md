@@ -1,6 +1,6 @@
 # How I Turned Linux Into My Ultimate Productivity Machine
 
-![My Linux Productivity Desktop](/home/akshat/.gemini/antigravity-cli/brain/549ee4da-b847-4577-86b5-be0867ba89c3/desktop_thumbnail_new.png)
+![My Linux Productivity Desktop](thumbnail.png)
 
 I wanted my Linux desktop to feel clean, fast, and polished enough that I wouldn't miss the little things I liked about macOS — while still keeping the raw flexibility, open ecosystem, and control that Linux gives me.
 
@@ -27,9 +27,9 @@ If you're relatively new to Linux, think of `setup.sh` as a little installer tha
 
 Before getting into the details, here is a quick 2.5-second clip showing the desktop in motion — the floating dock, the clean top bar, and the fluid window transitions:
 
-![Desktop Demo](/home/akshat/.gemini/antigravity-cli/brain/549ee4da-b847-4577-86b5-be0867ba89c3/desktop_demo_2.5s.gif)
+![Desktop Demo](demo.gif)
 
-*(Full screencast video file: [`desktop_demo_2.5s.mp4`](file:///home/akshat/Videos/Screencasts/desktop_demo_2.5s.mp4))*
+> 🎬 **High-Resolution Screencast Video:** [`desktop_demo_2.5s.mp4`](desktop_demo_2.5s.mp4) *(High-definition 60fps MP4 recording included in repo)*
 
 ---
 
@@ -51,14 +51,13 @@ I tuned the visual layer to a dark, macOS-inspired look with:
 You don't have to fiddle with sliders in Tweaks manually — the setup script sets all these GNOME keys in one go.
 
 #### Downloading the Icon Pack (`modern-repack`)
-* **Download Archive:** [`/home/akshat/modern-repack.tar.xz`](file:///home/akshat/modern-repack.tar.xz) *(33 MB)*
-* **Zip Version:** [`/home/akshat/modern-repack.zip`](file:///home/akshat/modern-repack.zip)
+* **Download Archive:** [`modern-repack.tar.xz`](modern-repack.tar.xz) *(33 MB)*
 * *Upstream project reference:* [WhiteSur Icon Theme on GitHub](https://github.com/vinceliuice/WhiteSur-icon-theme)
 
 To install it manually if you're not using the script:
 ```bash
 mkdir -p ~/.local/share/icons
-tar -xf /home/akshat/modern-repack.tar.xz -C ~/.local/share/icons/
+tar -xf modern-repack.tar.xz -C ~/.local/share/icons/
 gtk-update-icon-cache -f -t ~/.local/share/icons/modern-repack/
 gsettings set org.gnome.desktop.interface icon-theme 'modern-repack'
 ```
@@ -106,9 +105,7 @@ I like animations, but only if they feel natural and don't slow me down.
 
 To replace the abrupt stock minimize transition, I use the **Compiz Alike Magic Lamp Effect** extension. Windows smoothly morph and swoosh directly into their dock icons, just like the classic macOS genie lamp effect:
 
-![Genie Lamp Effect](https://media.tenor.com/NlchYn-iapIAAAAM/genie-lamp.gif)
-
-*(Local copy: [`genie-lamp.gif`](file:///home/akshat/.gemini/antigravity-cli/brain/549ee4da-b847-4577-86b5-be0867ba89c3/genie-lamp.gif))*
+![Genie Lamp Effect](genie-lamp.gif)
 
 It’s a fun, nostalgic touch, but paired with Wayland/Mutter hardware acceleration, it runs at a silky 60/120fps with zero frame lag.
 
@@ -215,14 +212,16 @@ cat /proc/sys/vm/swappiness
 
 The wallpaper is the dark mode edition of macOS Monterey from the WhiteSur collection. The muted curves add depth while keeping terminal windows and desktop icons clear and readable.
 
+* **Repository Image:** [`Monterey-dark.jpg`](Monterey-dark.jpg)
 * **Direct 4K Raw Image:** [Monterey-dark.jpg on GitHub](https://raw.githubusercontent.com/vinceliuice/WhiteSur-wallpapers/main/4k/Monterey-dark.jpg)
 * **Wallpaper Project:** [vinceliuice/WhiteSur-wallpapers](https://github.com/vinceliuice/WhiteSur-wallpapers)
-* **Local Cached Path:** [`/home/akshat/.local/share/backgrounds/Monterey-dark.jpg`](file:///home/akshat/.local/share/backgrounds/Monterey-dark.jpg)
 
 To apply it from the terminal:
 ```bash
-gsettings set org.gnome.desktop.background picture-uri 'file:///home/akshat/.local/share/backgrounds/Monterey-dark.jpg'
-gsettings set org.gnome.desktop.background picture-uri-dark 'file:///home/akshat/.local/share/backgrounds/Monterey-dark.jpg'
+mkdir -p ~/.local/share/backgrounds
+cp Monterey-dark.jpg ~/.local/share/backgrounds/
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.local/share/backgrounds/Monterey-dark.jpg"
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.local/share/backgrounds/Monterey-dark.jpg"
 ```
 
 ---
@@ -243,7 +242,7 @@ If you prefer installing extensions directly through the GNOME Extensions manage
 
 ## The Easy Way: One-Click Setup Script (`setup.sh`)
 
-Rather than navigating menus and running thirty different `gsettings` commands, the whole setup is packaged in [`/home/akshat/setup.sh`](file:///home/akshat/setup.sh).
+Rather than navigating menus and running thirty different `gsettings` commands, the whole setup is packaged in [`setup.sh`](setup.sh).
 
 You can run it straight away:
 
