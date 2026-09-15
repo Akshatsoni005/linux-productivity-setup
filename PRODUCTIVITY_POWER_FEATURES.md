@@ -69,7 +69,9 @@ Retyping long compiler stack traces or complex URLs character-by-character is a 
 ### The Superpower
 I added **SnapText**, an on-screen optical character recognition (OCR) engine integrated into the GNOME Shell.
 
-* **Shortcut:** Hit your custom hotkey (or click the SnapText icon in the top panel).
+![SnapText Screen-to-Text OCR Banner](snaptext-ocr-demo.png)
+
+* **Shortcut:** Hit your custom hotkey (`Ctrl + Shift + S` or click the SnapText icon in the top panel).
 * **Action:** Drag a crosshair marquee over *any* area on your screen — a video frame, an image, or a blocked webpage.
 * **Result:** Within 200 milliseconds, the text is recognized via Tesseract OCR and automatically placed into your system clipboard, accompanied by a subtle confirmation sound.
 
@@ -88,7 +90,10 @@ The default single-item clipboard is dangerous. You copy a complex regex pattern
 ### The Superpower
 **Clipboard Indicator** sits unobtrusively in the top status bar and acts as an indexed clipboard history manager:
 
+![Clipboard Indicator Live History Popup](clipboard-history-demo.png)
+
 * **Instant Access:** Press <kbd>Super</kbd> + <kbd>V</kbd> to open a searchable dropdown of your last 50 copied items.
+* **Text & Image Thumbnails:** Stores code snippets, URLs, file paths, and copied images with live visual previews.
 * **Search-as-you-type:** Type a keyword to immediately find a code block or URL you copied two hours ago.
 * **Pinned Favorites:** Pin frequent snippets — like your SSH public key, common boilerplate scripts, or standard markdown headers — so they never roll off the history stack.
 * **Privacy & Security:** One-click history clear, with an optional private mode toggle that suspends clipboard recording when entering sensitive credentials or password vaults.
