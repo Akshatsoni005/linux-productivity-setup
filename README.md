@@ -320,3 +320,18 @@ The result is a workstation that gets out of the way when I need to focus and gi
 And ultimately, that's what a good desktop is all about:
 
 **Less time managing the desktop, more time actually getting work done.**
+
+---
+
+## ⚡ Part 2: Workflow Power Features Deep Dive
+
+Want to take productivity even further? Read the companion article:
+
+📖 **[How I Made My Linux PC Insanely Productive: Quick Look, OCR & Power Features](PRODUCTIVITY_POWER_FEATURES.md)**
+
+Covers:
+* **The Spacebar Quick Look (`gnome-sushi`):** Instant preview of images, PDFs, code, and videos with <kbd>Space</kbd>.
+* **Screen-to-Text OCR (`SnapText`):** Instant clipboard extraction from uncopyable screens, slides, and videos.
+* **Clipboard History (`Super + V`):** Never lose copied snippets or code.
+* **Seamless Phone Integration (`GSConnect`):** Two-way clipboard sync, notification mirroring, and file drops.
+* **Peeking Top Bar & Live Biometric Face Unlock.**
