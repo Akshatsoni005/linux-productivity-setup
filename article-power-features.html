@@ -357,6 +357,68 @@
       background: rgba(255, 255, 255, 0.02);
     }
 
+    /* Screenshot Showcase */
+    .showcase-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+
+    .showcase-card {
+      background: rgba(15, 17, 26, 0.7);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .showcase-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .showcase-img-wrap {
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .showcase-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .showcase-info {
+      padding: 1.2rem 1.4rem;
+    }
+
+    .showcase-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .showcase-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .showcase-desc {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 0;
+      line-height: 1.55;
+    }
+
     /* Footer */
     footer {
       margin-top: 4rem;
@@ -434,6 +496,51 @@
       <div class="callout">
         <div class="callout-title">💡 The Spacebar Workflow</div>
         In Nautilus (Files), click any file and tap <kbd>Space</kbd>. An ultra-fast hardware-accelerated preview pops up instantly. Tap <kbd>Space</kbd> again or <kbd>Esc</kbd> to dismiss it.
+      </div>
+
+      <!-- Real Desktop Screenshot Showcase -->
+      <div class="showcase-grid">
+        <!-- 1. Image Preview -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="sushi-image-preview.png" alt="GNOME Sushi High-Resolution Image Preview" loading="lazy">
+          </div>
+          <div class="showcase-info">
+            <div class="showcase-tag">Instant Visual Rendering</div>
+            <div class="showcase-title">1. High-Resolution Graphics & Photos</div>
+            <p class="showcase-desc">
+              Tapping <kbd>Space</kbd> on a massive 16.8 MB illustration (<code>blue-lotus1.png</code>) displays a crisp, color-accurate preview with zoom toggles in under 80ms—no photo editor required.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Code Preview -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="sushi-code-preview.png" alt="GNOME Sushi Syntax Highlighted Code Preview" loading="lazy">
+          </div>
+          <div class="showcase-info">
+            <div class="showcase-tag">Developer Velocity</div>
+            <div class="showcase-title">2. Syntax-Highlighted Source Code & Configs</div>
+            <p class="showcase-desc">
+              Auditing functions, checking docstrings, or verifying imports in Python (<code>app.py</code>), Rust, JSON, or Bash scripts directly from Nautilus with accurate syntax coloring and line numbering.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Folder Preview -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="sushi-folder-preview.png" alt="GNOME Sushi Folder Metadata Preview" loading="lazy">
+          </div>
+          <div class="showcase-info">
+            <div class="showcase-tag">File Management Intelligence</div>
+            <div class="showcase-title">3. Folder Metadata & Recursive Size Calculation</div>
+            <p class="showcase-desc">
+              Instead of right-clicking and opening slow "Properties" dialogs, hitting <kbd>Space</kbd> on a folder reveals total item count (159 items), size on disk (63.6 MB), and last modified timestamp at a glance.
+            </p>
+          </div>
+        </div>
       </div>
 
       <h3>What Sushi Previews in Under 100ms:</h3>
