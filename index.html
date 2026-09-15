@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Turned Linux Into My Ultimate Productivity Machine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1015;
+      --card-bg: rgba(26, 27, 36, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --code-bg: #141620;
+      --btn-bg: #222533;
+      --btn-hover: #2e3245;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", sans-serif;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 860px;
+      width: 100%;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: #f8fafc;
+      margin-bottom: 1rem;
+      letter-spacing: -0.025em;
+    }
+
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .hero-image-wrap {
+      margin: 2.5rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      background: #000;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      font-size: 1.05rem;
+      color: #cbd5e1;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin: 2.8rem 0 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    ul {
+      margin: 0 0 1.5rem 1.5rem;
+      color: #cbd5e1;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: #94a3b8;
+    }
+
+    .code-block {
+      position: relative;
+      margin: 1.2rem 0 1.8rem;
+      border-radius: var(--radius);
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .copy-btn {
+      background: var(--btn-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--btn-hover);
+      color: #fff;
+    }
+
+    pre {
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      backdrop-filter: blur(12px);
+    }
+
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .download-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: transform 0.2s, border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .download-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: var(--accent);
+      color: #0b1120;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .download-btn:hover {
+      opacity: 0.9;
+    }
+
+    .media-card {
+      text-align: center;
+      margin: 2rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: #000;
+    }
+
+    .media-card img, .media-card video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .media-caption {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: var(--code-bg);
+      border-top: 1px solid var(--card-border);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <header>
+      <span class="tag">Linux Workstation Tuning</span>
+      <h1>How I Turned Linux Into My Ultimate Productivity Machine</h1>
+      <div class="meta">
+        <span>By Akshat Soni</span>
+        <span>•</span>
+        <span>5 min read</span>
+        <span>•</span>
+        <span>GNOME + ZRAM Blueprint</span>
+      </div>
+    </header>
+
+    <div class="hero-image-wrap">
+      <img src="thumbnail.png" alt="Clean Linux Desktop Showcase" />
+    </div>
+
+    <p>I wanted my Linux desktop to feel clean, fast, and polished enough that I wouldn't miss the little things I liked about macOS — while still keeping the flexibility and control that Linux gives me.</p>
+
+    <p>The result is a minimal GNOME desktop with a macOS-inspired look, a floating dock, a clean top bar, smart window tiling, smooth animations, and a few memory tweaks that make the system feel responsive even when I'm doing a lot at once.</p>
+
+    <blockquote>
+      Whenever friends or colleagues who daily-drive a MacBook sit down at my desk, their first comment is almost always: <strong>"Wait... why does this feel snappier than my Mac?"</strong>
+    </blockquote>
+
+    <p>The important part: <strong>you don't need to understand every obscure GNOME setting to reproduce it.</strong></p>
+
+    <p>I've put the entire desktop configuration into a simple setup script, so most of the customization is just running two commands:</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>Bash</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>chmod +x ~/setup.sh
+~/setup.sh</code></pre>
+    </div>
+
+    <p>If you're new to Linux, think of <code>setup.sh</code> as a little installer that tells Linux which settings to change for you.</p>
+
+    <h2>The 2.5-Second Desktop Walkthrough</h2>
+    <div class="media-card">
+      <img src="demo.gif" alt="Desktop in motion" />
+      <div class="media-caption">The 2.5-second live walkthrough: fluid genie minimization, floating frosted dock, and dynamic top bar.</div>
+    </div>
+
+    <h2>What the setup actually changes</h2>
+
+    <h3>1. A cleaner GNOME desktop</h3>
+    <p>I use GNOME as the base because it is simple and distraction-free. I changed the appearance to a dark, macOS-inspired setup with:</p>
+    <ul>
+      <li><strong>WhiteSur-style theme:</strong> Clean dark visual language.</li>
+      <li><strong><code>modern-repack</code> icons:</strong> Dark mode icons with crisp application recognition.</li>
+      <li><strong>SF Pro & JetBrains Mono typography:</strong> Clean legibility across all windows.</li>
+      <li><strong>Text Scaling at 1.2:</strong> Comfortable reading on modern 1080p/2K/4K displays.</li>
+      <li><strong>Dark Monterey wallpaper:</strong> Abstract depth without visual noise.</li>
+      <li><strong>Minimal window controls:</strong> Clean <code>:minimize,maximize,close</code> layout.</li>
+    </ul>
+
+    <div class="download-grid">
+      <div class="download-card">
+        <div>
+          <h3>modern-repack Icon Pack</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">The complete icon pack with dark-mode styling and vector assets.</p>
+        </div>
+        <a href="modern-repack.tar.xz" download class="download-btn">Download .tar.xz (33 MB)</a>
+      </div>
+
+      <div class="download-card">
+        <div>
+          <h3>One-Click setup.sh</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Shell script to automatically apply all GNOME keys, dock, and tiling configs.</p>
+        </div>
+        <a href="setup.sh" download class="download-btn">Download setup.sh</a>
+      </div>
+    </div>
+
+    <h3>2. A floating dock</h3>
+    <p>Instead of having a large permanent panel at the bottom, I use a small floating dock with <strong>Dash to Dock</strong>. It stays out of the way until I need it, while still giving me quick access to frequently used applications.</p>
+    <p>The dock also shows running applications with small dot indicators, so I can immediately see what's open, and clicking an app automatically minimizes or cycles windows.</p>
+
+    <h3>3. A useful top bar</h3>
+    <p>I wanted the top bar to show information that I actually care about instead of filling it with random indicators. Mine includes:</p>
+    <ul>
+      <li><strong>Apps & Places menus:</strong> Fast, discreet drop-downs instead of full-screen search interruptions.</li>
+      <li><strong>RAM & Swap usage:</strong> Real-time graphs so I always know system headroom.</li>
+      <li><strong>A centered date/time:</strong> Clean numeric format.</li>
+      <li><strong>Transparent appearance:</strong> Blends into the wallpaper seamlessly via <code>dynamic-transparent-top-bar</code>.</li>
+    </ul>
+
+    <h3>4. Better window management</h3>
+    <p>This is probably the biggest productivity improvement. I use <strong>Tiling Shell</strong> to quickly arrange windows.</p>
+    <p>Instead of manually resizing windows, I can snap them into layouts and keep everything organized. I also use very small gaps between windows — just <strong>4px</strong> — so the desktop stays clean without wasting screen space.</p>
+
+    <h3>5. Smoother animations (The Genie Effect)</h3>
+    <p>I like having animations, but they shouldn't slow me down. The setup uses <strong>Compiz Alike Magic Lamp Effect</strong> to give minimized windows a smooth genie-style swoop into the dock:</p>
+
+    <div class="media-card" style="max-width: 480px; margin: 1.5rem auto;">
+      <img src="genie-lamp.gif" alt="Aladdin Genie Lamp animation" />
+      <div class="media-caption">Smooth genie bottle minimization via Mutter hardware acceleration.</div>
+    </div>
+
+    <h2>Making Linux handle memory better</h2>
+    <p>This is the part that's useful even if you don't care about the visual customization. I use <strong>ZRAM</strong>.</p>
+
+    <h3>What is ZRAM?</h3>
+    <p>Normally, when Linux runs low on RAM, it moves memory pages out to your SSD. That works, but disk storage is thousands of times slower than RAM, leading to sluggishness and system freezes.</p>
+    <p>ZRAM takes a different approach: it creates a compressed block of memory inside RAM and stores less-active memory pages there in compressed form using <code>lz4</code>. Instead of immediately pushing everything to the disk, Linux keeps more of the workload compressed in RAM.</p>
+
+    <div class="card">
+      <h3>Ubuntu / Debian Installation</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>sudo apt update && sudo apt install zram-tools</code></pre>
+      </div>
+
+      <p>Edit <code>/etc/default/zramswap</code>:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>/etc/default/zramswap</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>ALGO=lz4
+PERCENT=50
+PRIORITY=100</code></pre>
+      </div>
+      <p>Restart with <code>sudo systemctl restart zramswap</code>.</p>
+    </div>
+
+    <div class="card">
+      <h3>Fedora Setup</h3>
+      <p>Fedora uses <code>systemd-zram-generator</code>:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Terminal</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>sudo dnf install zram-generator</code></pre>
+      </div>
+      <p>In <code>/etc/systemd/zram-generator.conf</code>:</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>/etc/systemd/zram-generator.conf</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>[zram0]
+zram-size = ram / 2
+compression-algorithm = lz4</code></pre>
+      </div>
+    </div>
+
+    <h2>One small swap adjustment (vm.swappiness = 25)</h2>
+    <p>I also set Linux's swappiness to <strong>25</strong>. This doesn't mean "never use swap" — it simply makes the kernel less eager to dump active application caches when plenty of RAM is still free.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span>Terminal</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code>echo "vm.swappiness=25" | sudo tee /etc/sysctl.d/99-swappiness.conf
+sudo sysctl --system</code></pre>
+    </div>
+
+    <h2>The Wallpaper</h2>
+    <p>I'm using the 4K dark version of the macOS Monterey wallpaper from the WhiteSur project.</p>
+    <ul>
+      <li><a href="https://raw.githubusercontent.com/vinceliuice/WhiteSur-wallpapers/main/4k/Monterey-dark.jpg" target="_blank" rel="noopener">Direct 4K Raw Download Link (GitHub)</a></li>
+      <li><a href="https://github.com/vinceliuice/WhiteSur-wallpapers" target="_blank" rel="noopener">WhiteSur Wallpapers Repository</a></li>
+    </ul>
+
+    <h2>The GNOME Extensions I Use</h2>
+    <ul>
+      <li><strong><a href="https://extensions.gnome.org/extension/7065/tiling-shell/" target="_blank">Tiling Shell</a></strong> — window tiling</li>
+      <li><strong><a href="https://extensions.gnome.org/extension/5125/modern-clock/" target="_blank">Modern Clock</a></strong> — centered desktop clock</li>
+      <li><strong><a href="https://extensions.gnome.org/extension/120/system-monitor/" target="_blank">System Monitor</a></strong> — RAM/swap indicators</li>
+      <li><strong><a href="https://extensions.gnome.org/extension/307/dash-to-dock/" target="_blank">Dash to Dock</a></strong> — floating bottom dock</li>
+      <li><strong><a href="https://extensions.gnome.org/extension/4413/compiz-alike-magic-lamp-effect/" target="_blank">Compiz Alike Magic Lamp Effect</a></strong> — smooth minimization</li>
+      <li><strong>Apps Menu / Places Menu</strong> — compact navigation</li>
+    </ul>
+
+    <h2>Why I like this setup</h2>
+    <p>The goal wasn't to make Linux look like macOS for the sake of imitation.</p>
+    <p>It was to take some of the things I like about modern desktop operating systems — clean visuals, predictable window management, smooth animations, and useful information — and combine them with the freedom and raw speed of Linux.</p>
+
+    <p style="font-weight: 600; color: #f8fafc; margin-top: 2rem;">Less time managing the desktop, more time actually using it.</p>
+
+    <footer>
+      <p>Crafted on Linux • Tested on Ubuntu & Fedora</p>
+    </footer>
+  </main>
+
+  <script>
+    function copyCode(btn) {
+      const code = btn.closest('.code-block').querySelector('code').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        setTimeout(() => {
+          btn.innerText = originalText;
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
